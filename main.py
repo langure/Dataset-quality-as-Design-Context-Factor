@@ -27,37 +27,8 @@ def resample_data():
     train_data.to_csv(TRAIN_DATA_PATH, index=False)
     validation_data.to_csv(VALIDATION_DATA_PATH, index=False)
 
-
+# This is just to sample the data, divide the data in test and validation set. To actually run the models, each model has its own script
+# with the corresponding name: ARI.py, CNN.py, etc.
 if __name__ == '__main__':
     if RESAMPLE_DATA:
         resample_data()
-
-    train_data = pd.read_csv(TRAIN_DATA_PATH)
-
-    original_gini_index = gini_coefficient(train_data)
-    print("\nOriginal Gini Index:", original_gini_index)
-
-    #balanced_gini, balanced_index = redistribute_gini_index(train_data, target_index=0.0, change_step=20, tolerance=0.01, max_iterations=1000)
-    #print("\nBalanced Gini Index:", balanced_index)
-    #print("\nNew Dataframe Label Distribution, with total samples: ", balanced_gini['shared_emotion'].value_counts())
-    # save the dataset to cvs
-    #balanced_gini.to_csv(os.path.join(WORK_DIR, 'balanced_gini.csv'), index=False)
-
-    #medium_gini, medium_index = redistribute_gini_index(train_data, target_index=0.5, change_step=20, tolerance=0.01, max_iterations=1000)
-    #print("\nMedium Gini Index:", medium_index)
-    #print("\nNew Dataframe Label Distribution, with total samples: ", medium_gini['shared_emotion'].value_counts())
-    # save the dataset to cvs
-    #medium_gini.to_csv(os.path.join(WORK_DIR, 'medium_gini.csv'), index=False)
-
-    unbalanced_gini, unbalanced_index = redistribute_gini_index(train_data, target_index=0.8, change_step=10, tolerance=0.01, max_iterations=1000)
-    print("\nUnbalanced Gini Index:", unbalanced_index)
-    print("\nNew Dataframe Label Distribution, with total samples: ", unbalanced_gini['shared_emotion'].value_counts())
-    # save the dataset to cvs
-    unbalanced_gini.to_csv(os.path.join(WORK_DIR, 'unbalanced_gini.csv'), index=False)
-
-    # write the balanced_gini, medium_gini, unbalanced_gini to a txt file
-    #with open(os.path.join(WORK_DIR, 'indexes.txt'), 'w') as f:
-    #    f.write(f'Original Gini Index: {original_gini_index}\n')
-    #    f.write(f'Balanced Gini Index: {balanced_index}\n')
-    #    f.write(f'Medium Gini Index: {medium_index}\n')
-    #    f.write(f'Unbalanced Gini Index: {unbalanced_index}\n')
