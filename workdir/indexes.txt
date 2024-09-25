@@ -1,0 +1,4 @@
+Original Gini Index: 0.37494905835440895
+Balanced Gini Index: 0.0
+Medium Gini Index: 0.49128173228891336
+Unbalanced Gini Index: 0.000549986937806824
